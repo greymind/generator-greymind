@@ -8,7 +8,7 @@
     <%= ControllerFunction %>.$inject = ['$scope']; 
 
     function <%= ControllerFunction %>($scope) {
-        $scope.title = '<%= ControllerTitle %>';
+        $scope.Title = '<%= ControllerTitle %>';
 
         activate();
 
