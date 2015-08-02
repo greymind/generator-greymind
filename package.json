@@ -4,7 +4,7 @@
   "description": "Greymind.com generator for popular web frameworks and such.",
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/bsrealm/generator-greymind.git"
+    "url": "git+https://github.com/greymind/generator-greymind.git"
   },
   "keywords": [
     "yeoman-generator",
@@ -12,12 +12,16 @@
     "Balki",
     "generator"
   ],
-  "author": "Balakrishnan <balki@live.com> (Balki)",
+  "author": {
+    "name": "Balakrishnan (Balki) Ranganathan",
+    "email": "balki@live.com",
+    "url": "http://greymind.com/"
+  },
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bsrealm/generator-greymind/issues"
+    "url": "https://github.com/greymind/generator-greymind/issues"
   },
-  "homepage": "https://github.com/bsrealm/generator-greymind#readme",
+  "homepage": "https://github.com/greymind/generator-greymind#readme",
   "dependencies": {
     "chalk": "^1.1.0",
     "lodash": "^3.10.0",
@@ -26,10 +30,12 @@
   },
   "files": [
     "app",
+    "ngapp",
     "ngmodule",
     "ngcontroller",
     "ngfactory",
     "ngfilter",
-    "ngdirective"
+    "ngdirective",
+    "ngview"
   ]
 }
