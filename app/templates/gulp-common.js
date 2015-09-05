@@ -4,12 +4,16 @@ var beautify = require('js-beautify');
 // Paths
 var paths = {};
 paths.Home = "./";
-paths.Bower = "./bower_components/";
-paths.Lib = "./lib/";
-paths.Client = "./"
+
+paths.Node = "node_modules/"
+paths.Bower = "bower_components/";
+
+paths.Client = "client/"
+paths.Lib = paths.Client + "lib/";
 paths.App = paths.Client + "app/";
 paths.Factories = paths.App + "factories/";
-global.paths = paths;
+
+paths.Server = "server/"
 
 module.exports.Paths = paths;
 

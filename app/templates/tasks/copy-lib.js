@@ -7,6 +7,7 @@ var lodash = require("lodash"),
     cheerio = require('cheerio'),
     es = require('event-stream'),
     gulpFilter = require('gulp-filter'),
+    sprintf = require('sprintf-js').sprintf,
     writeHtml = require('../gulp-common.js').WriteHtml,
     paths = require('../gulp-common.js').Paths;
 
@@ -48,7 +49,7 @@ gulp.task('Copy:Lib', ['Clean:Lib'], function (cb) {
                 if (typeof bowerPaths[bowerModule] === 'undefined') {
                     bowerPaths[bowerModule] = [];
                 }
-                bowerPaths[bowerModule].push("<script src=\"/" + filepath + "\"></script>");
+                bowerPaths[bowerModule].push(sprintf("<script src=\"/%s\"></script>", filepath));
 
                 cb(null, file);
             }));

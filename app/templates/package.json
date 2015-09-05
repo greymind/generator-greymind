@@ -3,7 +3,10 @@
   "version": "0.1.0",
   "description": "<%= AppName %> project",
   "private": true,
-  "dependencies": {},
+  "dependencies": {
+    "express": "^4.13.3",
+    "mongodb": "^2.0.41"
+  },
   "devDependencies": {
     "cheerio": "^0.19.0",
     "del": "^1.2.0",
@@ -22,6 +25,7 @@
     "http-server": "^0.8.0",
     "js-beautify": "^1.5.10",
     "lodash": "^3.10.1",
+    "nodemon": "^1.4.1",
     "require-dir": "^0.3.0",
     "rimraf": "^2.4.2",
     "run-sequence": "^1.1.2",
@@ -29,7 +33,7 @@
     "tsd": "^0.6.4"
   },
   "scripts": {
-    "start": "http-server"
+    "start": "cd ./server/ && nodemon -w . ./app.js"
   },
   "keywords": [
     "<%= AppName %>"

@@ -21,7 +21,7 @@ module.exports = yeoman.Base.extend({
 
 		this.fs.copyTpl(
 			this.templatePath('ngview.html'),
-			this.destinationPath(sprintf('app/%1$s/%1$s.html', viewNameLowerCase)),
+			this.destinationPath(sprintf('client/app/%1$s/%1$s.html', viewNameLowerCase)),
 			{
 				ViewName: this.ViewName,
 				ViewControllerName: this.ViewName

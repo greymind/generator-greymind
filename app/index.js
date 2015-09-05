@@ -44,12 +44,16 @@ module.exports = yeoman.Base.extend({
 	},
 	writing: function () {
 		this.log('Creating app folders...');
-		mkdirp('app');
-		mkdirp('content/images');
-		mkdirp('content/css');
+		mkdirp('client/app');
+		mkdirp('client/content/images');
+		mkdirp('client/content/css');
+		mkdirp('client/common');
+		mkdirp('client/lib');
+		mkdirp('client/tests');
+		mkdirp('server');
+		mkdirp('server/common');
+		mkdirp('server/tests');
 		mkdirp('common');
-		mkdirp('lib');
-		mkdirp('tests');
 
 		this.AppNameForConfig = lodash.kebabCase(this.AppName);
 
@@ -80,31 +84,35 @@ module.exports = yeoman.Base.extend({
 		this.CopyTemplate('tasks/bundle-app.js');
 		
 		// App
-		this.CopyTemplate('app/app.js', { AppName: this.AppName });
+		this.CopyTemplate('client/app/app.js', { AppName: this.AppName });
 		
 		// Index Controller
-		this.CopyTemplate('app/index.controller.js',
+		this.CopyTemplate('client/app/index.controller.js',
 			{
 				AppName: this.AppName,
 				AppTitle: lodash.startCase(this.AppName)
 			});
 			
 		// Index View
-		this.CopyTemplate('index.html', { AppName: this.AppName });
+		this.CopyTemplate('client/index.html', { AppName: this.AppName });
 			
 		// Home
 		this.composeWith('greymind:ngcontroller', { args: ['Home'] });
 		this.composeWith('greymind:ngview', { args: ['Home'] });
 		
 		// Content
-		this.CopyTemplate('content/images/favicon.png');
-		this.CopyTemplate('content/css/app.css');
+		this.CopyTemplate('client/content/images/favicon.png');
+		this.CopyTemplate('client/content/css/app.css');
+		
+		// Server
+		this.CopyTemplate('server/app.js');
 	},
 	install: function () {
 		this.installDependencies();
 	},
 	end: function () {
 		this.spawnCommand('./node_modules/.bin/tsd', ['install']);
+		this.spawnCommand('./node_modules/.bin/gulp', ['Build']);
 	}
 });
 

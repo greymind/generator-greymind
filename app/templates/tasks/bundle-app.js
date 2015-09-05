@@ -17,7 +17,7 @@ gulp.task('Bundle:App', function (cb) {
     gulp.src([
         paths.App + "factories/**/*.js",
         paths.App + "**/*.controller.js"
-    ], { base: paths.Client })
+    ], { base: paths.Home })
         .pipe(es.map(function (file, cb) {
             var filepath = path.relative(file.base, file.path)
                 .split(path.sep)

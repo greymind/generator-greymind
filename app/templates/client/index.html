@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="<%= AppName %>" ng-controller="Index">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title ng-bind="Title"></title>
+    <link rel="icon" href="/content/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/content/css/app.css">
+</head>
+
+<body ng-cloak="">
+
+    <div class="container body-container" ng-view=""></div>
+
+    <div id="data-copy-lib">
+
+    </div>
+
+    <script src="/app/app.js"></script>
+
+    <div id="data-bundle-app">
+
+    </div>
+</body>
+
+</html>
