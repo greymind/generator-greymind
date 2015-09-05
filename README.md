@@ -5,9 +5,12 @@ Greymind.com generator for popular web frameworks and such.
 * `npm install -g generator-greymind`
 * `yo greymind <AppName>`
 
-## Generators
+## Sub-generators
+Usage: `yo greymind:<sub-generator-name> [args]`
+
 * `ngcontroller <ControllerName>`
-* `ngview <ControllerName>`
+* `ngview <ViewName>`
+  * Assumes controller with same name as `ViewName`
 
 ## Contributors
 * Balakrishnan (Balki) Ranganathan
