@@ -25,6 +25,8 @@
   "dependencies": {
     "chalk": "^1.1.0",
     "lodash": "^3.10.0",
+    "mkdirp": "^0.5.1",
+    "sprintf-js": "^1.0.3",
     "yeoman-generator": "^0.20.2",
     "yosay": "^1.0.5"
   },
@@ -36,6 +38,7 @@
     "ngfactory",
     "ngfilter",
     "ngdirective",
-    "ngview"
+    "ngview",
+    "tsd"
   ]
 }
