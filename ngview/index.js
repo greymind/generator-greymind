@@ -1,4 +1,5 @@
 var lodash = require('lodash'),
+	sprintf = require('sprintf-js').sprintf,
 	yeoman = require('yeoman-generator');
 
 module.exports = yeoman.Base.extend({
@@ -16,13 +17,14 @@ module.exports = yeoman.Base.extend({
 		this.ViewName = (this.options.nocap ? this.ViewName : lodash.capitalize(this.ViewName));
 	},
 	writing: function () {
+		var viewNameLowerCase = this.ViewName.toLowerCase();
+
 		this.fs.copyTpl(
 			this.templatePath('ngview.html'),
-			this.destinationPath(this.ViewName.toLowerCase() + '.html'),
+			this.destinationPath(sprintf('app/%1$s/%1$s.html', viewNameLowerCase)),
 			{
 				ViewName: this.ViewName,
 				ViewControllerName: this.ViewName
-			}
-			);
+			});
 	},
 });
