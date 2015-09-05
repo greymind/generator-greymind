@@ -1,5 +1,5 @@
-# Greymind Generator for Yo
-Greymind.com generator for popular web frameworks and such.
+# Greymind Yeoman-based Generator
+Greymind.com Yeoman-based generator for popular web frameworks.
 
 ## Usage
 * `npm install -g generator-greymind`
