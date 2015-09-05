@@ -1,7 +1,7 @@
 {
   "name": "generator-greymind",
   "version": "1.0.3",
-  "description": "Greymind.com Yeoman generator for popular web frameworks.",
+  "description": "Greymind.com Yeoman-based generator for popular web frameworks.",
   "preferGlobal": true,
   "readme": "README.md",
   "repository": {
