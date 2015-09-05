@@ -1,6 +1,6 @@
 {
   "name": "generator-greymind",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "Greymind.com generator for popular web frameworks and such.",
   "repository": {
     "type": "git",
