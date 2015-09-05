@@ -7,20 +7,14 @@ module.exports = yeoman.Base.extend({
 		yeoman.Base.apply(this, arguments);
 
 		this.argument('ControllerName', { type: String, required: true });
-		
+
 		this.ModuleName = this.config.get('AppName');
-		if (!this.ModuleName)
-		{
+		if (!this.ModuleName) {
 			this.argument('ModuleName', { type: String, required: true });
 		}
 
-		// Don't camel case the argument
-		this.option('nocamel');
-		this.ControllerName = (this.options.nocamel ? this.ControllerName : lodash.camelCase(this.ControllerName));
-
-		// Don't capitalize the first letter
-		this.option('nocap');
-		this.ControllerName = (this.options.nocap ? this.ControllerName : lodash.capitalize(this.ControllerName));
+		this.ControllerName = lodash.camelCase(this.ControllerName);
+		this.ControllerName = lodash.capitalize(this.ControllerName);
 	},
 	writing: function () {
 		var controllerNameLowerCase = this.ControllerName.toLowerCase();

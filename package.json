@@ -42,5 +42,6 @@
     "ngdirective",
     "ngview",
     "test"
-  ]
+  ],
+  "devDependencies": {}
 }

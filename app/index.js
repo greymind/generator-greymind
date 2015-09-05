@@ -7,21 +7,28 @@ var lodash = require('lodash'),
 	yeoman = require('yeoman-generator'),
 	chalk = require('chalk'),
 	yosay = require('yosay'),
+	path = require('path'),
+	logHelper = require('../common/log-helper.js'),
+	logError = logHelper.logError, logSuccess = logHelper.logSuccess, logWarning = logHelper.logWarning,
 	mkdirp = require('mkdirp');
 
 module.exports = yeoman.Base.extend({
 	constructor: function () {
 		yeoman.Base.apply(this, arguments);
 
+		if (this.destinationRoot() !== process.cwd()) {
+			logError('Please run this command from the root folder of your project!');
+			process.exit(1);
+		}
+
+		if (process.argv[2] !== 'greymind') {
+			logError('Please check the generator name. Unsupported generator: ' + process.argv[2].split(':')[1]);
+			process.exit(2);
+		}
+
 		this.argument('AppName', { type: String, required: true });
-
-		// Don't camel case the arguments
-		this.option('nocamel');
-		this.AppName = this.options.nocamel ? this.AppName : lodash.camelCase(this.AppName);
-
-		// Don't capitalize the first letter
-		this.option('nocap');
-		this.AppName = this.options.nocap ? this.AppName : lodash.capitalize(this.AppName);
+		this.AppName = lodash.camelCase(this.AppName);
+		this.AppName = lodash.capitalize(this.AppName);
 	},
 	prompting: function () {
 		this.log(yosay(
