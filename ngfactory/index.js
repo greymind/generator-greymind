@@ -23,7 +23,6 @@ module.exports = yeoman.Base.extend({
 				ModuleName: this.ModuleName,
 				FactoryName: this.FactoryName,
 				FactoryFunction: this.FactoryName + 'Factory'
-			}
-			);
+			});
 	},
 });

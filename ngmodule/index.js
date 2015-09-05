@@ -21,7 +21,6 @@ module.exports = yeoman.Base.extend({
 			this.destinationPath(this.ModuleName.toLowerCase() + '.module.js'),
 			{
 				ModuleName: this.ModuleName
-			}
-			);
+			});
 	},
 });

@@ -23,7 +23,6 @@ module.exports = yeoman.Base.extend({
 				ModuleName: this.ModuleName,
 				FilterName: this.FilterName,
 				FilterFunction: this.FilterName + 'Filter'
-			}
-			);
+			});
 	},
 });

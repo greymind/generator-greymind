@@ -23,7 +23,6 @@ module.exports = yeoman.Base.extend({
 				ModuleName: this.ModuleName,
 				DirectiveName: this.DirectiveName,
 				DirectiveFunction: this.DirectiveName + 'Directive'
-			}
-			);
+			});
 	},
 });
