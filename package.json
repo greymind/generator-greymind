@@ -39,6 +39,6 @@
     "ngfilter",
     "ngdirective",
     "ngview",
-    "tsd"
+    "test"
   ]
 }
