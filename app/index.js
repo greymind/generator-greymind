@@ -1,28 +1,27 @@
+/// <reference path="../typings/tsd.d.ts" />
+
 'use strict';
 
 var lodash = require('lodash'),
+	sprintf = require('sprintf-js').sprintf,
 	yeoman = require('yeoman-generator'),
 	chalk = require('chalk'),
-	yosay = require('yosay');
+	yosay = require('yosay'),
+	mkdirp = require('mkdirp');
 
 module.exports = yeoman.Base.extend({
 	constructor: function () {
 		yeoman.Base.apply(this, arguments);
 
-		this.argument('ModuleName', { type: String, required: true });
+		this.argument('AppName', { type: String, required: true });
 
 		// Don't camel case the arguments
 		this.option('nocamel');
-		if (this.options.nocamel) {
-			this.ModuleName = lodash.camelCase(this.ModuleName);
-		}
+		this.AppName = this.options.nocamel ? this.AppName : lodash.camelCase(this.AppName);
 
 		// Don't capitalize the first letter
 		this.option('nocap');
-		if (this.options.nocap)
-		{
-			this.ModuleName = lodash.capitalize(this.ModuleName);
-		}
+		this.AppName = this.options.nocap ? this.AppName : lodash.capitalize(this.AppName);
 	},
 	prompting: function () {
 		this.log(yosay(
@@ -30,18 +29,82 @@ module.exports = yeoman.Base.extend({
 			));
 	},
 	configuring: function () {
-		this.log(yosay('Module name set to ' + chalk.blue(this.ModuleName) + '!'));
-		this.config.set('ModuleName', this.ModuleName);
-		
+		this.config.set('AppName', this.AppName);
+		this.log('App name set to ' + chalk.blue(this.AppName) + '!');
+
 		function BooleanChalk(bool) {
 			return bool ? chalk.green('True') : chalk.red('False');
 		}
-		
-		this.log(yosay('camelCasing preference set to ' + BooleanChalk(this.options.nocamel) + '!'));
+
 		this.config.set('nocamel', this.options.nocamel);
-		
-		this.log(yosay('Capitalization preference set to ' + BooleanChalk(this.options.nocap) + '!'));
+		this.log('camelCasing preference set to ' + BooleanChalk(this.options.nocamel));
+
 		this.config.set('nocap', this.options.nocap);
+		this.log('Capitalization preference set to ' + BooleanChalk(this.options.nocap));
+	},
+	writing: function () {
+		this.log('Creating app folders...');
+		mkdirp('app');
+		mkdirp('content/images');
+		mkdirp('content/css');
+		mkdirp('common');
+		mkdirp('lib');
+		mkdirp('tests');
+
+		this.AppNameForConfig = lodash.kebabCase(this.AppName);
+
+		this.CopyTemplate = function (fromTo, context) {
+			return this.fs.copyTpl(this.templatePath(fromTo), this.destinationPath(fromTo), context);
+		}
+		
+		// Git Ignore
+		this.CopyTemplate('.gitignore');
+		
+		// Npm
+		this.CopyTemplate('package.json',
+			{
+				AppName: this.AppName,
+				AppNameForConfig: this.AppNameForConfig
+			});
+			
+		// Bower
+		this.CopyTemplate('bower.json', { AppNameForConfig: this.AppNameForConfig });
+			
+		// Tsd
+		this.CopyTemplate('tsd.json');
+		
+		// Gulp
+		this.CopyTemplate('gulpfile.js');
+		this.CopyTemplate('gulp-common.js');
+		this.CopyTemplate('tasks/copy-lib.js');
+		this.CopyTemplate('tasks/bundle-app.js');
+		
+		// App
+		this.CopyTemplate('app/app.js', { AppName: this.AppName });
+		
+		// Index Controller
+		this.CopyTemplate('app/index.controller.js',
+			{
+				AppName: this.AppName,
+				AppTitle: lodash.startCase(this.AppName)
+			});
+			
+		// Index View
+		this.CopyTemplate('index.html', { AppName: this.AppName });
+			
+		// Home
+		this.composeWith('greymind:ngcontroller', { args: ['Home'] });
+		this.composeWith('greymind:ngview', { args: ['Home'] });
+		
+		// Content
+		this.CopyTemplate('content/images/favicon.png');
+		this.CopyTemplate('content/css/app.css');
+	},
+	install: function () {
+		this.installDependencies();
+	},
+	end: function () {
+		this.spawnCommand('./node_modules/.bin/tsd', ['install']);
 	}
 });
 

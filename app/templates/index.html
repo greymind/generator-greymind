@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en" ng-app="<%= AppName %>" ng-controller="Index">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <title ng-bind="Title"></title>
+    <link rel="icon" href="/content/images/favicon.png" type="image/png">
+    <link rel="stylesheet" href="/lib/bootstrap/css/bootstrap.css">
+    <link rel="stylesheet" href="/content/css/app.css">
+</head>
+
+<body ng-cloak="">
+
+    <div class="container body-container" ng-view=""></div>
+
+    <div id="data-copy-lib">
+        <script src="/lib/lodash/lodash.js"></script>
+        <script src="/lib/jquery/jquery.js"></script>
+        <script src="/lib/jquery-validation/jquery.validate.js"></script>
+        <script src="/lib/jquery-validation-unobtrusive/jquery.validate.unobtrusive.js"></script>
+        <script src="/lib/bootstrap/js/bootstrap.js"></script>
+        <script src="/lib/hammer.js/hammer.js"></script>
+        <script src="/lib/angular/angular.js"></script>
+        <script src="/lib/angular-mocks/angular-mocks.js"></script>
+        <script src="/lib/angular-resource/angular-resource.js"></script>
+        <script src="/lib/angular-route/angular-route.js"></script>
+    </div>
+
+    <script src="/app/app.js"></script>
+
+    <div id="data-bundle-app">
+        <script src="/app/home/home.controller.js"></script>
+        <script src="/app/index.controller.js"></script>
+    </div>
+</body>
+
+</html>
