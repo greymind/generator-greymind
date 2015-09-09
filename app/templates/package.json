@@ -2,6 +2,7 @@
   "name": "<%= AppNameForConfig %>",
   "version": "0.1.0",
   "description": "<%= AppName %> project",
+  "main": "server/app.js",
   "private": true,
   "dependencies": {
     "express": "^4.13.3",

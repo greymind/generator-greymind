@@ -1,4 +1,5 @@
 var lodash = require('lodash'),
+	sprintf = require('sprintf-js').sprintf,
 	yeoman = require('yeoman-generator');
 
 module.exports = yeoman.Base.extend({
@@ -7,22 +8,23 @@ module.exports = yeoman.Base.extend({
 
 		this.argument('DirectiveName', { type: String, required: true });
 
-		// Don't camel case the argument
-		this.option('nocamel');
-		this.DirectiveName = (this.options.nocamel ? this.DirectiveName : lodash.camelCase(this.DirectiveName));
+		this.ModuleName = this.config.get('AppName');
+		if (!this.ModuleName) {
+			this.argument('ModuleName', { type: String, required: true });
+		}
 
-		// Don't capitalize the first letter
-		this.option('nocap');
-		this.DirectiveName = (this.options.nocap ? this.DirectiveName : lodash.capitalize(this.DirectiveName));
+		this.DirectiveName = lodash.camelCase(this.DirectiveName);
 	},
 	writing: function () {
+		var directiveNameKebabCase = lodash.kebabCase(this.DirectiveName);
+
 		this.fs.copyTpl(
 			this.templatePath('ngdirective.js'),
-			this.destinationPath(this.DirectiveName.toLowerCase() + '.directive.js'),
+			this.destinationPath(sprintf('client/app/directives/%s.js', directiveNameKebabCase)),
 			{
 				ModuleName: this.ModuleName,
 				DirectiveName: this.DirectiveName,
-				DirectiveFunction: this.DirectiveName + 'Directive'
+				DirectiveFunction: lodash.capitalize(this.DirectiveName) + 'Directive'
 			});
 	},
 });

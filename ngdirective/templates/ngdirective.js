@@ -3,15 +3,22 @@
 
     angular
         .module('<%= ModuleName %>Directives')
-        .controller('<%= ControllerName %>', <%= ControllerFunction %>);
+        .directive('<%= DirectiveName %>', <%= DirectiveFunction %>);
 
-    <%= ControllerFunction %>.$inject = ['$scope']; 
+    <%= DirectiveFunction %>.$inject = ['$window'];
 
-    function <%= ControllerFunction %>($scope) {
-        $scope.Title = '<%= ControllerTitle %>';
+    function <%= DirectiveFunction %>($window) {
+        // Usage:
+        //     <directive></directive>
+        // Creates:
+        // 
+        var directive = {
+            link: link,
+            restrict: 'EA'
+        };
+        return directive;
 
-        activate();
-
-        function activate() { }
+        function link(scope, element, attrs) {
+        }
     }
 })();
