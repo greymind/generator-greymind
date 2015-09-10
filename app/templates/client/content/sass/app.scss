@@ -1,11 +1,22 @@
+// Fonts
+$font-family: wf_segoe-ui_normal, 'Segoe UI', Segoe, 'Segoe WP', Tahoma, Verdana, Arial, sans-serif;
+$font-size: 16px;
+
+// Colors
+//$background-color: rgb(237, 237, 237);
+$background-color: rgb(255, 255, 255);
+$foreground-color: rgb(37, 37, 37);  
+
 body {
     /*padding-top: 50px;*/
     padding-bottom: 20px;
     overflow-y: scroll;
-    /*background-color: rgb(242, 242, 242);*/
     
-    font-family: wf_segoe-ui_normal, 'Segoe UI', Segoe, 'Segoe WP', Tahoma, Verdana, Arial, sans-serif;
-    font-size: 16px;
+    background-color: $background-color;
+    color: $foreground-color;
+    
+    font-family: $font-family;
+    font-size: $font-size;
     font-stretch: normal;
     font-style: normal;
     font-variant: normal;
@@ -38,11 +49,13 @@ textarea {
     padding-bottom: 1100px;
 }
 
-embed-container img{
-    position: absolute;
-    top: 0;
-    left: 0;
-    width:100%;
+.embed-container {
+    img {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width:100%;
+    }
 }
 
 /* Placeholder CSS */
