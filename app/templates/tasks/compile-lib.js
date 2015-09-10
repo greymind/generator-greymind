@@ -3,7 +3,6 @@ var lodash = require("lodash"),
     path = require('path'),
     fs = require('fs-extra'),
     del = require("del"),
-    rimraf = require("rimraf"),
     runSequence = require("run-sequence"),
     es = require('event-stream'),
     concat = require('gulp-concat'),
@@ -16,7 +15,7 @@ var lodash = require("lodash"),
     paths = require('../gulp-common.js').Paths;
 
 gulp.task('Clean:Lib', function (cb) {
-    rimraf(paths.DistLib, cb);
+    del(paths.DistLib, cb);
 });
 
 var src = function (path) {
