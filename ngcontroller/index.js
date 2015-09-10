@@ -17,11 +17,11 @@ module.exports = yeoman.Base.extend({
 		this.ControllerName = lodash.capitalize(this.ControllerName);
 	},
 	writing: function () {
-		var controllerNameLowerCase = this.ControllerName.toLowerCase();
+		var controllerNameKebabCase = lodash.kebabCase(this.ControllerName);
 
 		this.fs.copyTpl(
 			this.templatePath('ngcontroller.js'),
-			this.destinationPath(sprintf('client/app/%1$s/%1$s.controller.js', controllerNameLowerCase)),
+			this.destinationPath(sprintf('client/app/%1$s/%1$s.controller.js', controllerNameKebabCase)),
 			{
 				ModuleName: this.ModuleName,
 				ControllerName: this.ControllerName,

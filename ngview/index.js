@@ -12,11 +12,11 @@ module.exports = yeoman.Base.extend({
 		this.ViewName = lodash.capitalize(this.ViewName);
 	},
 	writing: function () {
-		var viewNameLowerCase = this.ViewName.toLowerCase();
+		var viewNameKebabCase = lodash.kebabCase(this.ViewName);
 
 		this.fs.copyTpl(
 			this.templatePath('ngview.html'),
-			this.destinationPath(sprintf('client/app/%1$s/%1$s.html', viewNameLowerCase)),
+			this.destinationPath(sprintf('client/app/%1$s/%1$s.html', viewNameKebabCase)),
 			{
 				ViewName: this.ViewName,
 				ViewControllerName: this.ViewName
