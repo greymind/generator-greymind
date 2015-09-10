@@ -8,7 +8,7 @@
     // Custom modules
         '<%= AppName %>Modules',
         '<%= AppName %>Controllers',
-        '<%= AppName %>Factories',
+        '<%= AppName %>Services',
         '<%= AppName %>Directives',
         '<%= AppName %>Filters',
         
