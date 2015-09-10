@@ -5,6 +5,8 @@ var express = require('express'),
 	items = require('./api/items.js'),
 	gRecaptcha = require('./api/g-recaptcha.js');
 
+var app = express();
+
 if (process.env.RunningOnIISNode == "True") {
 	app.get('/', function (req, res) {
 		fs.readFile('../client/index.html', 'utf8', function (err, text) {
