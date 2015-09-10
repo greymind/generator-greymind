@@ -68,6 +68,8 @@ module.exports = yeoman.Base.extend({
 		// Hosting
 		this.CopyTemplate('web.config');
 		this.CopyTemplate('iisnode.yml');
+		this.CopyTemplate('.deployment');
+		this.CopyTemplate('deploy.cmd');
 		
 		// Npm
 		this.CopyTemplate('.npmignore');
@@ -86,8 +88,9 @@ module.exports = yeoman.Base.extend({
 		// Gulp
 		this.CopyTemplate('gulpfile.js');
 		this.CopyTemplate('gulp-common.js');
-		this.CopyTemplate('tasks/copy-lib.js');
-		this.CopyTemplate('tasks/bundle-app.js');
+		this.CopyTemplate('tasks/compile-lib.js');
+		this.CopyTemplate('tasks/compile-js.js');
+		this.CopyTemplate('tasks/compile-sass.js');
 		
 		// Client App
 		this.CopyTemplate('client/app/app.js', { AppName: this.AppName });
