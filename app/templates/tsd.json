@@ -49,6 +49,24 @@
     },
     "bootstrap/bootstrap.d.ts": {
       "commit": "bb051830df88f5a55dcf06b7fe85bf6b62cc97f2"
+    },
+    "chalk/chalk.d.ts": {
+      "commit": "76ed26e95e91f1c91f2d11819c44b55b617e859a"
+    },
+    "gulp-sass/gulp-sass.d.ts": {
+      "commit": "76ed26e95e91f1c91f2d11819c44b55b617e859a"
+    },
+    "gulp-sourcemaps/gulp-sourcemaps.d.ts": {
+      "commit": "76ed26e95e91f1c91f2d11819c44b55b617e859a"
+    },
+    "gulp-rename/gulp-rename.d.ts": {
+      "commit": "76ed26e95e91f1c91f2d11819c44b55b617e859a"
+    },
+    "gulp-concat/gulp-concat.d.ts": {
+      "commit": "76ed26e95e91f1c91f2d11819c44b55b617e859a"
+    },
+    "gulp-uglify/gulp-uglify.d.ts": {
+      "commit": "76ed26e95e91f1c91f2d11819c44b55b617e859a"
     }
   }
 }
