@@ -1,0 +1,21 @@
+{
+  "config-mode": true,
+  "mongodb": {
+    "connection": "mongodb://<dbuser>:<dbpass>@<hostname>:<port>/<subdirectory>"
+  },
+  "g-recaptcha": {
+    "secret": "<secret>"
+  },
+  "items": [
+    {
+      "_id": "55e57b5a0549875d84816abf",
+      "Name": "Second Entry",
+      "TimeStamp": "2015-02-02T13:05:16.863"
+    },
+    {
+      "_id": "55e57b5a0549875d84816abe",
+      "Name": "First Entry",
+      "TimeStamp": "2015-02-02T12:56:04.513"
+    }
+  ]
+}

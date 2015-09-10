@@ -1,6 +1,9 @@
-var express = require('express');
-var fs = require('fs');
-var app = express();
+var express = require('express'),
+	fs = require('fs'),
+	bodyParser = require('body-parser'),
+	monitoring = require('./api/monitoring.js'),
+	items = require('./api/items.js'),
+	gRecaptcha = require('./api/g-recaptcha.js');
 
 if (process.env.RunningOnIISNode == "True") {
 	app.get('/', function (req, res) {
@@ -19,6 +22,19 @@ else {
 	app.use('/', express.static('../client'));
 }
 
+app.use(bodyParser.urlencoded({ extended: false }));
+app.use(bodyParser.json());
+
+// Monitoring and keep-alive
+app.get('/api/monitoring', monitoring.Get);
+
+// Items API
+app.get('/api/items', items.GetAll);
+app.post('/api/items', items.Post);
+
+// Recaptcha
+app.get('/api/g-recaptcha', gRecaptcha.Get);
+
 app.use(function (err, req, res, next) {
 	console.error(err.stack);
 	res.status(500).send('Something broke!');
@@ -32,5 +48,5 @@ var server = app.listen(process.env.PORT || 8080, function () {
 	var host = server.address().address;
 	var port = server.address().port;
 
-	console.log('Example app listening at http://%s:%s', host, port);
+	console.log('Server app listening at http://%s:%s', host, port);
 });
