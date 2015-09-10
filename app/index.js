@@ -71,7 +71,12 @@ module.exports = yeoman.Base.extend({
 		// Git Ignore
 		this.CopyTemplate('.gitignore');
 		
+		// Hosting
+		this.CopyTemplate('web.config');
+		this.CopyTemplate('iisnode.yml');
+		
 		// Npm
+		this.CopyTemplate('.npmignore');
 		this.CopyTemplate('package.json',
 			{
 				AppName: this.AppName,
@@ -90,7 +95,7 @@ module.exports = yeoman.Base.extend({
 		this.CopyTemplate('tasks/copy-lib.js');
 		this.CopyTemplate('tasks/bundle-app.js');
 		
-		// App
+		// Client App
 		this.CopyTemplate('client/app/app.js', { AppName: this.AppName });
 		
 		// Index Controller
@@ -111,8 +116,14 @@ module.exports = yeoman.Base.extend({
 		this.CopyTemplate('client/content/images/favicon.png');
 		this.CopyTemplate('client/content/css/app.css');
 		
-		// Server
+		// Server App
 		this.CopyTemplate('server/app.js');
+		
+		// APIs
+		this.CopyTemplate('server/api/config.json');
+		this.CopyTemplate('server/api/monitoring.js');
+		this.CopyTemplate('server/api/items.js');
+		this.CopyTemplate('server/api/g-recaptcha.js');
 	},
 	install: function () {
 		this.installDependencies();

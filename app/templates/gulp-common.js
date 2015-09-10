@@ -11,7 +11,7 @@ paths.Bower = "bower_components/";
 paths.Client = "client/"
 paths.Lib = paths.Client + "lib/";
 paths.App = paths.Client + "app/";
-paths.Factories = paths.App + "factories/";
+paths.Services = paths.App + "services/";
 
 paths.Server = "server/"
 

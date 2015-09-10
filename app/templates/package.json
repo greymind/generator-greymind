@@ -5,8 +5,13 @@
   "main": "server/app.js",
   "private": true,
   "dependencies": {
+    "lodash": "^3.10.1",
+    "body-parser": "^1.13.3",
     "express": "^4.13.3",
-    "mongodb": "^2.0.41"
+    "moment": "^2.10.6",
+    "mongodb": "^2.0.41",
+    "nconf": "^0.7.2",
+    "sprintf-js": "^1.0.3"
   },
   "devDependencies": {
     "cheerio": "^0.19.0",
@@ -38,5 +43,18 @@
   },
   "keywords": [
     "<%= AppName %>"
-  ]
+  ],
+  "author": {
+    "name": "<name>",
+    "email": "<email>",
+    "url": "<url>"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/<user>/<repository>.git"
+  },
+  "bugs": {
+    "url": "https://github.com/<user>/<repository>/issues"
+  },
+  "homepage": "https://github.com/<user>/<repository>#readme"
 }

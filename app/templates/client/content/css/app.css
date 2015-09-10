@@ -25,3 +25,46 @@ select,
 textarea {
     max-width: 280px;
 }
+
+/* Blocks space for images, use proper ratio as percentage or pixel */
+.embed-container {
+    position: relative;
+    height: 0;
+    overflow: hidden;
+    background-color:black;
+}
+
+.image-height {
+    padding-bottom: 1100px;
+}
+
+embed-container img{
+    position: absolute;
+    top: 0;
+    left: 0;
+    width:100%;
+}
+
+/* Placeholder CSS */
+::-webkit-input-placeholder { /* WebKit, Blink, Edge */
+    color: gray;
+    font-size: 12px;
+    font-style: italic;
+}
+:-moz-placeholder { /* Mozilla Firefox 4 to 18 */
+   color: gray;
+   opacity: 1;
+   font-size: 12px;
+   font-style: italic;
+}
+::-moz-placeholder { /* Mozilla Firefox 19+ */
+   color: gray;
+   opacity: 1;
+   font-size: 12px;
+   font-style: italic;
+}
+:-ms-input-placeholder { /* Internet Explorer 10-11 */
+   color: gray;
+   font-size: 12px;
+   font-style: italic;
+}

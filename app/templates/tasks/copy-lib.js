@@ -18,15 +18,16 @@ gulp.task('Clean:Lib', function (cb) {
 gulp.task('Copy:Lib', ['Clean:Lib'], function (cb) {
     var bower = {
         "lodash": "lodash/lodash.js",
+        "sprintf": "sprintf/dist/sprintf.min.js",
+        "moment": "moment/moment.js",
         "jquery": "jquery/dist/jquery*.{js,map}",
-        "jquery-validation": "jquery-validation/dist/jquery.validate.js",
-        "jquery-validation-unobtrusive": "jquery-validation-unobtrusive/jquery.validate.unobtrusive.js",
         "bootstrap": "bootstrap/dist/**/*.{js,map,css,ttf,svg,woff,woff2,eot}",
         "hammer.js": "hammer.js/hammer*.{js,map}",
         "angular": "angular/angular*.{js,map}",
         "angular-mocks": "angular-mocks/angular-mocks.js",
         "angular-resource": "angular-resource/angular-resource*.{js,map}",
         "angular-route": "angular-route/angular-route*.{js,map}",
+        "angular-recaptcha": "angular-recaptcha/release/angular-recaptcha.min.js"
     };
 
     var bowerPaths = {};

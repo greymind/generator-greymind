@@ -15,7 +15,8 @@ gulp.task('Bundle:App', function (cb) {
     d.empty();
 
     gulp.src([
-        paths.App + "factories/**/*.js",
+        paths.App + "services/**/*.js",
+        paths.App + "directives/**/*.js",
         paths.App + "**/*.controller.js"
     ], { base: paths.Home })
         .pipe(es.map(function (file, cb) {
