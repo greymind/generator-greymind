@@ -39,15 +39,9 @@ module.exports = yeoman.Base.extend({
 		this.config.set('AppName', this.AppName);
 		this.log('App name set to ' + chalk.blue(this.AppName) + '!');
 
-		function BooleanChalk(bool) {
+		this.BooleanChalk = function (bool) {
 			return bool ? chalk.green('True') : chalk.red('False');
 		}
-
-		this.config.set('nocamel', this.options.nocamel);
-		this.log('camelCasing preference set to ' + BooleanChalk(this.options.nocamel));
-
-		this.config.set('nocap', this.options.nocap);
-		this.log('Capitalization preference set to ' + BooleanChalk(this.options.nocap));
 	},
 	writing: function () {
 		this.log('Creating app folders...');
