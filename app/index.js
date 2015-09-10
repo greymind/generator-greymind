@@ -111,7 +111,7 @@ module.exports = yeoman.Base.extend({
 		
 		// Content
 		this.CopyTemplate('client/content/images/favicon.png');
-		this.CopyTemplate('client/content/css/app.css');
+		this.CopyTemplate('client/content/sass/app.scss');
 		
 		// Server App
 		this.CopyTemplate('server/app.js');
