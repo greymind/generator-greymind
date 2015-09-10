@@ -7,23 +7,16 @@
 
     <title ng-bind="Title"></title>
     <link rel="icon" href="/client/content/images/favicon.png" type="image/png">
-    <link rel="stylesheet" href="/client/lib/bootstrap/css/bootstrap.css">
-    <link rel="stylesheet" href="/client/content/css/app.css">
+    <link rel="stylesheet" href="/client/dist/lib/lib.min.css">
+    <link rel="stylesheet" href="/client/dist/app/app.min.css">
 </head>
 
 <body ng-cloak="">
 
     <div class="container body-container" ng-view=""></div>
 
-    <div id="data-copy-lib">
-
-    </div>
-
-    <script src="/app/app.js"></script>
-
-    <div id="data-bundle-app">
-
-    </div>
+    <script src="/client/dist/lib/lib.min.js"></script>
+    <script src="/client/dist/app/app.min.js"></script>
 </body>
 
 </html>

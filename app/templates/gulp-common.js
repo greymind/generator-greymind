@@ -10,8 +10,14 @@ paths.Bower = "bower_components/";
 
 paths.Client = "client/"
 paths.Lib = paths.Client + "lib/";
+
 paths.App = paths.Client + "app/";
 paths.Services = paths.App + "services/";
+paths.Directives = paths.App + "directives/";
+
+paths.Content = paths.Client + "content/";
+paths.Css = paths.Content + "css/";
+paths.Sass = paths.Content + "sass/";
 
 paths.Server = "server/"
 
