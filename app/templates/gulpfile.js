@@ -10,7 +10,7 @@ var gulp = require("gulp"),
     tasks = requireDir('./tasks');
 
 gulp.task('Build', function (cb) {
-    runSequence('Compile:Lib', 'Compile:App', cb);
+    runSequence(['Compile:Lib', 'Compile:App'], cb);
 });
 
 gulp.task('Compile:App', ['Clean:App:Js', 'Clean:App:Css'], function (cb) {
