@@ -9,7 +9,10 @@ paths.Node = "node_modules/"
 paths.Bower = "bower_components/";
 
 paths.Client = "client/"
-paths.Lib = paths.Client + "lib/";
+
+paths.Dist = paths.Client + "dist/";
+paths.DistApp = paths.Dist + "app/";
+paths.DistLib = paths.Dist + "lib/";
 
 paths.App = paths.Client + "app/";
 paths.Services = paths.App + "services/";
