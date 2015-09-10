@@ -37,7 +37,7 @@
     "ngapp",
     "ngmodule",
     "ngcontroller",
-    "ngfactory",
+    "ngservice",
     "ngfilter",
     "ngdirective",
     "ngview",

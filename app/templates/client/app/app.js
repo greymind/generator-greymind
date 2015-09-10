@@ -18,7 +18,7 @@
     
     angular.module('<%= AppName %>Modules', []);
     angular.module('<%= AppName %>Controllers', []);
-    angular.module('<%= AppName %>Factories', []);
+    angular.module('<%= AppName %>Services', []);
     angular.module('<%= AppName %>Directives', []);
     angular.module('<%= AppName %>Filters', []);
     
