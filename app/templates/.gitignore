@@ -4,3 +4,5 @@ typings/
 **/.vagrant/
 server/api/config.json
 npm-debug.log
+client/dist/
+client/**/*.map
