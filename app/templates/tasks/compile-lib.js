@@ -15,28 +15,28 @@ var lodash = require("lodash"),
     sprintf = require('sprintf-js').sprintf,
     paths = require('../gulp-common.js').Paths;
 
-gulp.task('Clean:Lib', function (cb) {
-    rimraf(paths.DistLib, cb);
+gulp.task('Clean:Lib', function (done) {
+    rimraf(paths.DistLib, done);
 });
 
-var src = function (path) {
+var Source = function (path) {
     return sprintf("%s%s", paths.Bower, path);
 }
 
 gulp.task('Compile:Lib:Js', function () {
     return gulp.src([
-        src('lodash/lodash.min.js'),
-        src('sprintf/dist/sprintf.min.js'),
-        src('moment/min/moment.min.js'),
-        src('jquery/dist/jquery.min.js'),
-        src('bootstrap/dist/js/bootstrap.min.js'),
-        src('hammer.js/hammer.min.js'),
-        src('angular/angular.min.js'),
-        src('angular-route/angular-route.min.js'),
-        src('angular-resource/angular-resource.min.js'),
-        src('angular-animate/angular-animate.min.js'),
-        src('angular-recaptcha/release/angular-recaptcha.min.js'),
-        src('angular-mocks/angular-mocks.js'),
+        Source('lodash/lodash.min.js'),
+        Source('sprintf/dist/sprintf.min.js'),
+        Source('moment/min/moment.min.js'),
+        Source('jquery/dist/jquery.min.js'),
+        Source('bootstrap/dist/js/bootstrap.min.js'),
+        Source('hammer.js/hammer.min.js'),
+        Source('angular/angular.min.js'),
+        Source('angular-route/angular-route.min.js'),
+        Source('angular-resource/angular-resource.min.js'),
+        Source('angular-animate/angular-animate.min.js'),
+        Source('angular-recaptcha/release/angular-recaptcha.min.js'),
+        Source('angular-mocks/angular-mocks.js'),
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('lib.js'))
@@ -49,7 +49,7 @@ gulp.task('Compile:Lib:Js', function () {
 
 gulp.task('Compile:Lib:Css', function () {
     return gulp.src([
-        src('bootstrap/dist/css/bootstrap.min.css'),
+        Source('bootstrap/dist/css/bootstrap.min.css'),
     ])
         .pipe(sourcemaps.init())
         .pipe(concat('lib.css'))
@@ -63,11 +63,11 @@ gulp.task('Compile:Lib:Css', function () {
 
 gulp.task('Compile:Lib:Fonts', function () {
     return gulp.src([
-        src('bootstrap/dist/fonts/glyphicons-halflings-regular.{css,ttf,svg,woff,woff2,eot}'),
+        Source('bootstrap/dist/fonts/glyphicons-halflings-regular.{css,ttf,svg,woff,woff2,eot}'),
     ])
         .pipe(gulp.dest(paths.DistLib + 'fonts/'));
 });
 
-gulp.task('Compile:Lib', ['Clean:Lib'], function (cb) {
-    runSequence(['Compile:Lib:Js', 'Compile:Lib:Css', 'Compile:Lib:Fonts'], cb);
+gulp.task('Compile:Lib', ['Clean:Lib'], function (done) {
+    runSequence(['Compile:Lib:Js', 'Compile:Lib:Css', 'Compile:Lib:Fonts'], done);
 });

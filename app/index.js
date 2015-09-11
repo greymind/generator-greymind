@@ -47,11 +47,11 @@ module.exports = yeoman.Base.extend({
 		this.log('Creating app folders...');
 		mkdirp('client/app');
 		mkdirp('client/content/images');
-		mkdirp('client/content/css');
+		mkdirp('client/content/sass');
 		mkdirp('client/common');
-		mkdirp('client/lib');
 		mkdirp('client/tests');
 		mkdirp('server');
+		mkdirp('server/api');
 		mkdirp('server/common');
 		mkdirp('server/tests');
 		mkdirp('common');

@@ -13,12 +13,12 @@ var lodash = require("lodash"),
   writeHtml = require('../gulp-common.js').WriteHtml,
   paths = require('../gulp-common.js').Paths;
 
-gulp.task('Clean:App:Css', function (cb) {
-  del([paths.DistApp + "*.css*"], cb);
+gulp.task('Clean:App:Css', function (done) {
+  del([paths.DistApp + "*.css*"], done);
 });
 
-gulp.task('Compile:App:Sass', function () {
-  gulp.src([paths.Sass + '**/*.scss'])
+gulp.task('Compile:App:Sass', ['Clean:App:Css'], function () {
+  return gulp.src([paths.Sass + '**/*.scss'])
     .pipe(sourcemaps.init())
     .pipe(concat('app.css'))
     .pipe(sass.sync({ style: 'compressed' }).on('error', sass.logError))
