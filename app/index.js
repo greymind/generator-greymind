@@ -55,6 +55,7 @@ module.exports = yeoman.Base.extend({
 		mkdirp('server/common');
 		mkdirp('server/tests');
 		mkdirp('common');
+		mkdirp('tmp');
 
 		this.AppNameForConfig = lodash.kebabCase(this.AppName);
 
@@ -91,6 +92,7 @@ module.exports = yeoman.Base.extend({
 		this.CopyTemplate('tasks/compile-lib.js');
 		this.CopyTemplate('tasks/compile-js.js');
 		this.CopyTemplate('tasks/compile-sass.js');
+		this.CopyTemplate('tasks/run-server.js');
 		
 		// Client App
 		this.CopyTemplate('client/app/app.js', { AppName: this.AppName });
