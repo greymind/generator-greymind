@@ -1,16 +1,11 @@
 var lodash = require("lodash"),
   gulp = require("gulp"),
-  path = require('path'),
-  fs = require('fs-extra'),
   del = require('del'),
-  rimraf = require('rimraf'),
-  es = require('event-stream'),
   concat = require('gulp-concat'),
   rename = require('gulp-rename'),
   sass = require('gulp-sass'),
   minifyCss = require('gulp-minify-css'),
   sourcemaps = require('gulp-sourcemaps'),
-  writeHtml = require('../gulp-common.js').WriteHtml,
   paths = require('../gulp-common.js').Paths;
 
 gulp.task('Clean:App:Css', function (done) {
