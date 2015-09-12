@@ -29,6 +29,11 @@ module.exports = yeoman.Base.extend({
     this.argument('AppName', { type: String, required: true });
     this.AppName = lodash.camelCase(this.AppName);
     this.AppName = lodash.capitalize(this.AppName);
+
+    this.option('noserver');
+    if (this.options.noserver) {
+      this.NoServer == true;
+    }
   },
   prompting: function () {
     this.log(yosay(
@@ -36,12 +41,13 @@ module.exports = yeoman.Base.extend({
       ));
   },
   configuring: function () {
-    this.config.set('AppName', this.AppName);
-    this.log('App name set to ' + chalk.blue(this.AppName) + '!');
-
     this.BooleanChalk = function (bool) {
       return bool ? chalk.green('True') : chalk.red('False');
     }
+
+    this.config.set('AppName', this.AppName);
+    this.log('App name set to ' + chalk.blue(this.AppName) + '!');
+    this.log('No server files: ' + this.BooleanChalk(this.NoServer) + '!');
   },
   writing: function () {
     this.log('Creating app folders...');
@@ -51,10 +57,14 @@ module.exports = yeoman.Base.extend({
     mkdirp('client/content/sass');
     mkdirp('client/common');
     mkdirp('client/tests');
-    mkdirp('server');
-    mkdirp('server/api');
-    mkdirp('server/common');
-    mkdirp('server/tests');
+
+    if (!this.NoServer) {
+      mkdirp('server');
+      mkdirp('server/api');
+      mkdirp('server/common');
+      mkdirp('server/tests');
+    }
+
     mkdirp('common');
     mkdirp('tmp');
 
@@ -91,12 +101,12 @@ module.exports = yeoman.Base.extend({
     this.CopyTemplate('tsd.json');
 		
     // Gulp
-    this.CopyTemplate('gulpfile.js');
+    this.CopyTemplate('gulpfile.js'); // ToDo: NoServer
     this.CopyTemplate('gulp-common.js');
     this.CopyTemplate('tasks/compile-lib.js');
     this.CopyTemplate('tasks/compile-js.js');
     this.CopyTemplate('tasks/compile-sass.js');
-    this.CopyTemplate('tasks/run-server.js');
+    this.CopyTemplate('tasks/run-server.js'); // ToDo: NoServer
 		
     // Client App
     this.CopyTemplate('client/app/app.js', { AppName: this.AppName });
