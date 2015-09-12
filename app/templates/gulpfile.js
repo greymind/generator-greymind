@@ -12,36 +12,46 @@ var gulp = require("gulp"),
     paths = require('./gulp-common.js').Paths,
     tasks = requireDir('./tasks');
 
-gulp.task('Build', function (cb) {
-    runSequence(['Compile:Lib', 'Compile:App'], cb);
+gulp.task('Build', function (done) {
+    runSequence(['Compile:Lib', 'Compile:App'], done);
 });
 
-gulp.task('Compile:App', function (cb) {
-    runSequence(['Compile:App:Js', 'Compile:App:Sass'], cb);
+gulp.task('Compile:App', function (done) {
+    runSequence(['Compile:App:Js', 'Compile:App:Sass'], done);
 });
 
-gulp.task('Clean', ['Clean:Server'], function () { });
+gulp.task('Clean:App', function (done) {
+    runSequence(['Clean:App:Js', 'Clean:App:Css'], done);
+});
 
-gulp.task('Watch', ['Run:Server'], function (cb) {
+gulp.task('Clean', ['Clean:Server', 'Clean:App', 'Clean:Lib']);
+
+gulp.task('Watch', ['Run:Server'], function (done) {
+    process.on('SIGINT', function () {
+        runSequence(['Clean:Server'], function () { process.exit(0); });
+    });
+
     gulp.watch([paths.App + "**/*.js"], function (event) {
         console.log(sprintf('[%s] File %s was %s, recompiling...', chalk.green('App'), event.path, event.type));
-        gulp.start(['Compile:App']);
+        runSequence(['Compile:App']);
     });
 
     gulp.watch([paths.Bower + "**/*.*"], function (event) {
         console.log(sprintf('[%s] File %s was %s, recompiling...', chalk.green('Bower'), event.path, event.type));
-        gulp.start(['Compile:Lib']);
+        runSequence(['Compile:Lib']);
     });
 
     gulp.watch([paths.Sass + "**/*.scss"], function (event) {
         console.log(sprintf('[%s] File %s was %s, recompiling...', chalk.green('Sass'), event.path, event.type));
-        gulp.start(['Compile:App:Sass']);
+        runSequence(['Compile:App:Sass']);
     });
 
     gulp.watch([paths.Server + "**/*.*"], function (event) {
         console.log(sprintf('[%s] File %s was %s, restarting...', chalk.green('Server'), event.path, event.type));
-        gulp.start(['Run:Server']);
+        runSequence(['Run:Server']);
     });
+
+    done();
 });
 
 gulp.task('default', ['Build']);
