@@ -1,6 +1,6 @@
 var lodash = require("lodash"),
   gulp = require("gulp"),
-  del = require('del'),
+  rimraf = require('rimraf'),
   concat = require('gulp-concat'),
   rename = require('gulp-rename'),
   sass = require('gulp-sass'),
@@ -9,7 +9,7 @@ var lodash = require("lodash"),
   paths = require('../gulp-common.js').Paths;
 
 gulp.task('Clean:App:Css', function (done) {
-  del([paths.DistApp + "*.css*"], done);
+  rimraf(paths.DistApp + "*.css*", done);
 });
 
 gulp.task('Compile:App:Sass', ['Clean:App:Css'], function () {

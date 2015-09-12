@@ -1,13 +1,13 @@
 ﻿(function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('<%= AppName %>')
-        .controller('Index', IndexController);
+  angular
+    .module('<%= AppName %>')
+    .controller('Index', IndexController);
 
-    IndexController.$inject = ['$scope'];
+  IndexController.$inject = ['$scope'];
 
-    function IndexController($scope) {
-        $scope.Title = '<%= AppTitle %>';
-    }
+  function IndexController($scope) {
+    $scope.Title = '<%= AppTitle %>';
+  }
 })();

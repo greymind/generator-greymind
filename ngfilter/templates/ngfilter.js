@@ -1,13 +1,13 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('<%= ModuleName %>Filters')
-        .Filter('<%= FilterName %>', <%= FilterFunction %>);
+  angular
+    .module('<%= ModuleName %>Filters')
+    .Filter('<%= FilterName %>', <%= FilterFunction %>);
 
-    function <%= FilterFunction %>() {
-        return function (input) {
-            return input;
-        };
-    }
+  function <%= FilterFunction %>() {
+    return function (input) {
+      return input;
+    };
+  }
 })();

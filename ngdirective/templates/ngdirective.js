@@ -1,24 +1,24 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('<%= ModuleName %>Directives')
-        .directive('<%= DirectiveName %>', <%= DirectiveFunction %>);
+  angular
+    .module('<%= ModuleName %>Directives')
+    .directive('<%= DirectiveName %>', <%= DirectiveFunction %>);
 
-    <%= DirectiveFunction %>.$inject = ['$window'];
+  <%= DirectiveFunction %>.$inject = ['$window'];
 
-    function <%= DirectiveFunction %>($window) {
-        // Usage:
-        //     <directive></directive>
-        // Creates:
-        // 
-        var directive = {
-            link: link,
-            restrict: 'EA'
-        };
-        return directive;
+  function <%= DirectiveFunction %>($window) {
+    // Usage:
+    //     <directive></directive>
+    // Creates:
+    // 
+    var directive = {
+      link: link,
+      restrict: 'EA'
+    };
+    return directive;
 
-        function link(scope, element, attrs) {
-        }
+    function link(scope, element, attrs) {
     }
+  }
 })();

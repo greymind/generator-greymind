@@ -1,19 +1,19 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('<%= ModuleName %>Services')
-        .factory('<%= ServiceName %>', <%= ServiceFunction %>);
+  angular
+    .module('<%= ModuleName %>Services')
+    .factory('<%= ServiceName %>', <%= ServiceFunction %>);
 
-    <%= ServiceFunction %>.$inject = ['$http'];
+  <%= ServiceFunction %>.$inject = ['$http'];
 
-    function <%= ServiceFunction %>($http) {
-        var service = {
-            GetData: getData
-        };
+  function <%= ServiceFunction %>($http) {
+    var service = {
+      GetData: getData
+    };
 
-        return service;
+    return service;
 
-        function serviceFunction() { }
-    }
+    function serviceFunction() { }
+  }
 })();

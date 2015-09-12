@@ -28,23 +28,23 @@ module.exports.Paths = paths;
 
 // Beautify and write HTML to file
 module.exports.WriteHtml = function (filePath, html, cb) {
-	var file = fs.createWriteStream(filePath);
-    file.write(beautify.html(html, {}));
-    file.end(function () {
-		cb();
-	});
+  var file = fs.createWriteStream(filePath);
+  file.write(beautify.html(html, {}));
+  file.end(function () {
+    cb();
+  });
 }
 
 // For SIGINT in Windows 32/64
 module.exports.EnsureSigInt = function () {
-	if (process.platform === "win32") {
-		var rl = require("readline").createInterface({
-			input: process.stdin,
-			output: process.stdout
-		});
+  if (process.platform === "win32") {
+    var rl = require("readline").createInterface({
+      input: process.stdin,
+      output: process.stdout
+    });
 
-		rl.on("SIGINT", function () {
-			process.emit("SIGINT");
-		});
-	}
+    rl.on("SIGINT", function () {
+      process.emit("SIGINT");
+    });
+  }
 }

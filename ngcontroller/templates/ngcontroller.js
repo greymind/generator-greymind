@@ -1,17 +1,17 @@
 (function () {
-    'use strict';
+  'use strict';
 
-    angular
-        .module('<%= ModuleName %>Controllers')
-        .controller('<%= ControllerName %>', <%= ControllerFunction %>);
+  angular
+    .module('<%= ModuleName %>Controllers')
+    .controller('<%= ControllerName %>', <%= ControllerFunction %>);
 
-    <%= ControllerFunction %>.$inject = ['$scope']; 
+  <%= ControllerFunction %>.$inject = ['$scope'];
 
-    function <%= ControllerFunction %>($scope) {
-        $scope.Title = '<%= ControllerTitle %>';
+  function <%= ControllerFunction %>($scope) {
+    $scope.Title = '<%= ControllerTitle %>';
 
-        activate();
+    activate();
 
-        function activate() { }
-    }
+    function activate() { }
+  }
 })();
