@@ -36,13 +36,15 @@ module.exports.WriteHtml = function (filePath, html, cb) {
 }
 
 // For SIGINT in Windows 32/64
-if (process.platform === "win32") {
-	var rl = require("readline").createInterface({
-		input: process.stdin,
-		output: process.stdout
-	});
+module.exports.EnsureSigInt = function () {
+	if (process.platform === "win32") {
+		var rl = require("readline").createInterface({
+			input: process.stdin,
+			output: process.stdout
+		});
 
-	rl.on("SIGINT", function () {
-		process.emit("SIGINT");
-	});
+		rl.on("SIGINT", function () {
+			process.emit("SIGINT");
+		});
+	}
 }
