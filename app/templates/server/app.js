@@ -21,7 +21,7 @@ else {
     res.redirect(req.url);
   });
 
-  app.use('/', express.static('../client'));
+  app.use('/', express.static('client'));
 }
 
 app.use(bodyParser.urlencoded({ extended: false }));
@@ -37,14 +37,32 @@ app.post('/api/items', items.Post);
 // Recaptcha
 app.get('/api/g-recaptcha', gRecaptcha.Get);
 
-app.use(function (err, req, res, next) {
-  console.error(err.stack);
-  res.status(500).send('Something broke!');
-});
+// Error handlers
+app.use(LogErrors);
+app.use(ClientErrorHandler);
+app.use(ErrorHandler);
 
-app.use(function (req, res, next) {
-  res.status(404).send('Sorry cant find that!');
-});
+function LogErrors(err, req, res, next) {
+  console.error(err.stack);
+  next(err);
+}
+
+function ClientErrorHandler(err, req, res, next) {
+  if (req.xhr) {
+    res.status(500)
+      .send({ error: 'Something blew up!' });
+  } else {
+    next(err);
+  }
+}
+
+function ErrorHandler(err, req, res, next) {
+  if (res.headersSent) {
+    return next(err);
+  }
+  res.status(500)
+    .render('error', { error: err });
+}
 
 var server = app.listen(process.env.PORT || 8080, function () {
   var host = server.address().address;
