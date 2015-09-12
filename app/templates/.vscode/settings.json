@@ -1,0 +1,19 @@
+// Place your settings in this file to overwrite default and user settings.
+{
+  "editor.tabSize": 2,
+  "editor.autoClosingBrackets": false,
+  "editor.insertSpaces": true,
+  "editor.fontSize": 20,
+  "editor.formatOnType": true,
+  "editor.wrappingColumn": 121,
+  "editor.wrappingIndent": "indent",
+  "files.exclude": {
+    "**/.git": true,
+    "**/.DS_Store": true,
+    "node_modules": true,
+    "bower_components": true,
+    "typings": true,
+    "tmp": true
+  },
+  "eslint.enable": true
+}
