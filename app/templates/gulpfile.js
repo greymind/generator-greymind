@@ -10,6 +10,7 @@ var gulp = require("gulp"),
     chalk = require('chalk'),
     forever = require('forever-monitor'),
     paths = require('./gulp-common.js').Paths,
+    EnsureSigInt = require('./gulp-common.js').EnsureSigInt,
     tasks = requireDir('./tasks');
 
 gulp.task('Build', function (done) {
@@ -27,27 +28,32 @@ gulp.task('Clean:App', function (done) {
 gulp.task('Clean', ['Clean:Server', 'Clean:App', 'Clean:Lib']);
 
 gulp.task('Watch', ['Run:Server'], function (done) {
+    EnsureSigInt();
     process.on('SIGINT', function () {
         runSequence(['Clean:Server'], function () { process.exit(0); });
     });
 
+    var Log = function (category, event) {
+        console.log(sprintf('[%s] File %s was %s, running task(s)...', chalk.green(category), event.path, event.type));
+    }
+
     gulp.watch([paths.App + "**/*.js"], function (event) {
-        console.log(sprintf('[%s] File %s was %s, recompiling...', chalk.green('App'), event.path, event.type));
+        Log('App', event);
         runSequence(['Compile:App']);
     });
 
     gulp.watch([paths.Bower + "**/*.*"], function (event) {
-        console.log(sprintf('[%s] File %s was %s, recompiling...', chalk.green('Bower'), event.path, event.type));
+        Log('Bower', event);
         runSequence(['Compile:Lib']);
     });
 
     gulp.watch([paths.Sass + "**/*.scss"], function (event) {
-        console.log(sprintf('[%s] File %s was %s, recompiling...', chalk.green('Sass'), event.path, event.type));
+        Log('Sass', event);
         runSequence(['Compile:App:Sass']);
     });
 
     gulp.watch([paths.Server + "**/*.*"], function (event) {
-        console.log(sprintf('[%s] File %s was %s, restarting...', chalk.green('Server'), event.path, event.type));
+        Log('Server', event);
         runSequence(['Run:Server']);
     });
 
