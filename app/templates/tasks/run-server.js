@@ -15,29 +15,43 @@ var StartForever = function () {
   server.start();
                 
   // Save foreverPid and pid to tmp file
-  nconf.set('forever-pid', server.data.foreverPid);
   nconf.set('child-pid', server.data.pid);
   nconf.save();
 }
 
-var CleanServer = function () {
-  // We should look for pids from temp file to clean up previously aborted run
-  var foreverPid = nconf.get('forever-pid');
-  var childPid = nconf.get('child-pid');
+var CleanServer = function (done) {
+  if (!server) {
+    // We should look for pids from temp file to clean up previously aborted run
+    var childPid = nconf.get('child-pid');
 
-  // If forever is already running, shut it down
-  forever.kill(childPid);
-  forever.kill(foreverPid);
+    // If forever is already running, shut it down
+    forever.kill(childPid);
 
-  // Reset pids
-  nconf.set('forever-pid', 0);
-  nconf.set('child-pid', 0);
-  nconf.save();
+    // Reset pids
+    nconf.set('child-pid', 0);
+    nconf.save();
+
+    // Callback
+    if (done) done();
+  }
+  else {
+    // Just cleanly stop the server!
+    if (server.data.running) {
+      server.stop()
+        .once('stop', function () {
+          // Reset pids
+          nconf.set('child-pid', 0);
+          nconf.save();
+          
+          // Callback
+          if (done) done();
+        });
+    }
+  }
 }
 
 gulp.task('Clean:Server', function (done) {
-  CleanServer();
-  done();
+  CleanServer(done);
 });
 
 gulp.task('Run:Server', function (done) {
