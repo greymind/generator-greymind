@@ -70,6 +70,9 @@
     },
     "fs-extra/fs-extra.d.ts": {
       "commit": "a461a243e2e09b213bc49d12650f80d81047576d"
+    },
+    "run-sequence/run-sequence.d.ts": {
+      "commit": "a461a243e2e09b213bc49d12650f80d81047576d"
     }
   }
 }
